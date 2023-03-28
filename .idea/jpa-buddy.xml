@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" migrateIndexesAndConstraints="true" reUseTableSchema="true">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="renamerInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="26cef5c7-71a7-4fb6-adea-25bbfd0fa3e9" />
+    <option name="reLastEntityCreationPackage" value="src/main/java/gov/iti/jets/filmslibrary/model" />
+  </component>
+</project>
