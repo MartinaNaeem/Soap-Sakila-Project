@@ -1,0 +1,87 @@
+
+//GET FILMS OF A SPECIFIC ACTOR USING ACTOR'S ID
+POST http://localhost:8080/library/getFilmsOFAnActor HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:getFilmsOFAnActor>
+            <actorId>1</actorId>
+        </library:getFilmsOFAnActor>
+    </soap:Body>
+</soap:Envelope>
+
+###
+
+
+//GET FILMS OF ALL ACTORS
+POST http://localhost:8080/library/getFilmsOfAllActors HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:getFilmsOfAllActors/>
+    </soap:Body>
+</soap:Envelope>
+
+
+
+###
+
+//ADD AN EXISTING FILM TO AN ACTOR USING FILM'S ID AND ACTOR'S ID
+POST http://localhost:8080/library/addExistingFilmToAnExistingActor HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:addExistingFilmToAnExistingActor>
+            <actorId>1</actorId>
+            <filmId>2</filmId>
+        </library:addExistingFilmToAnExistingActor>
+    </soap:Body>
+</soap:Envelope>
+
+
+###
+
+
+
+//REMOVE FILM OF AN ACTOR
+POST http://localhost:8080/library/removeFilmOfAnActor HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:removeFilmOfAnActor>
+            <actorId>1</actorId>
+            <filmId>2</filmId>
+        </library:removeFilmOfAnActor>
+    </soap:Body>
+</soap:Envelope>
+
+
+###
+
+# POST http://localhost:8080/library/removeAllFilmsActors HTTP/1.1
+# Content-Type: text/xml
+
+# <soap:Envelope
+#     xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+#     xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+#     <soap:Body>
+#         <library:removeAllFilmsActors/>
+#     </soap:Body>
+# </soap:Envelope>
+
+###
+
+
+

@@ -2,6 +2,23 @@
 
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
 
+    <endpoint name="getFilmsOFAnActor"
+              implementation="gov.iti.jets.filmslibrary.services.ActorFilmsService"
+              url-pattern="/getFilmsOFAnActor"/>
 
+    <endpoint name="getFilmsOfAllActors"
+              implementation="gov.iti.jets.filmslibrary.services.ActorFilmsService"
+              url-pattern="/getFilmsOfAllActors"/>
 
+    <endpoint name="addExistingFilmToAnExistingActor"
+              implementation="gov.iti.jets.filmslibrary.services.ActorFilmsService"
+              url-pattern="/addExistingFilmToAnExistingActor"/>
+
+    <endpoint name="removeFilmOfAnActor"
+              implementation="gov.iti.jets.filmslibrary.services.ActorFilmsService"
+              url-pattern="/removeFilmOfAnActor"/>
+
+    <endpoint name="removeAllFilmsActors"
+              implementation="gov.iti.jets.filmslibrary.services.ActorFilmsService"
+              url-pattern="/removeAllFilmsActors"/>
 </endpoints>
