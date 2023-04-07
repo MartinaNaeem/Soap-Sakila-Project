@@ -5,13 +5,10 @@
 package gov.iti.jets.filmslibrary.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 /**
  *
@@ -21,15 +18,16 @@ import javax.persistence.Table;
 @Table(name = "actor_info")
 @NamedQueries({
     @NamedQuery(name = "ActorInfo.findAll", query = "SELECT a FROM ActorInfo a"),
-    @NamedQuery(name = "ActorInfo.findByActorId", query = "SELECT a FROM ActorInfo a WHERE a.actorId = :actorId"),
+    @NamedQuery(name = "ActorInfo.findById", query = "SELECT a FROM ActorInfo a WHERE a.id = :id"),
     @NamedQuery(name = "ActorInfo.findByFirstName", query = "SELECT a FROM ActorInfo a WHERE a.firstName = :firstName"),
     @NamedQuery(name = "ActorInfo.findByLastName", query = "SELECT a FROM ActorInfo a WHERE a.lastName = :lastName")})
 public class ActorInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
-    @Column(name = "actor_id")
-    private short actorId;
+    @Column(name = "id")
+    @Id
+    private short id;
     @Basic(optional = false)
     @Column(name = "first_name")
     private String firstName;
@@ -43,12 +41,12 @@ public class ActorInfo implements Serializable {
     public ActorInfo() {
     }
 
-    public short getActorId() {
-        return actorId;
+    public short getId() {
+        return id;
     }
 
-    public void setActorId(short actorId) {
-        this.actorId = actorId;
+    public void setId(short id) {
+        this.id = id;
     }
 
     public String getFirstName() {

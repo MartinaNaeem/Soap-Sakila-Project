@@ -5,12 +5,8 @@
 package gov.iti.jets.filmslibrary.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+
+import jakarta.persistence.*;
 
 /**
  *
@@ -32,6 +28,7 @@ import javax.persistence.Table;
 public class CustomerList implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Id
     @Basic(optional = false)
     @Column(name = "ID")
     private short id;
