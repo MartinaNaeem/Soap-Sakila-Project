@@ -23,8 +23,7 @@ import jakarta.persistence.*;
     @NamedQuery(name = "CustomerList.findByPhone", query = "SELECT c FROM CustomerList c WHERE c.phone = :phone"),
     @NamedQuery(name = "CustomerList.findByCity", query = "SELECT c FROM CustomerList c WHERE c.city = :city"),
     @NamedQuery(name = "CustomerList.findByCountry", query = "SELECT c FROM CustomerList c WHERE c.country = :country"),
-    @NamedQuery(name = "CustomerList.findByNotes", query = "SELECT c FROM CustomerList c WHERE c.notes = :notes"),
-    @NamedQuery(name = "CustomerList.findBySid", query = "SELECT c FROM CustomerList c WHERE c.sid = :sid")})
+    @NamedQuery(name = "CustomerList.findByNotes", query = "SELECT c FROM CustomerList c WHERE c.notes = :notes")})
 public class CustomerList implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,9 +50,20 @@ public class CustomerList implements Serializable {
     @Basic(optional = false)
     @Column(name = "notes")
     private String notes;
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Basic(optional = false)
-    @Column(name = "SID")
-    private short sid;
+    @Column(name = "email")
+    private String email;
+
 
     public CustomerList() {
     }
@@ -122,12 +132,5 @@ public class CustomerList implements Serializable {
         this.notes = notes;
     }
 
-    public short getSid() {
-        return sid;
-    }
-
-    public void setSid(short sid) {
-        this.sid = sid;
-    }
     
 }

@@ -7,22 +7,8 @@ package gov.iti.jets.filmslibrary.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
+import jakarta.persistence.*;
 
 /**
  *
@@ -60,10 +46,10 @@ public class Address implements Serializable {
     @Basic(optional = false)
     @Column(name = "phone")
     private String phone;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "location")
-    private byte[] location;
+//    @Basic(optional = false)
+//    @Lob
+//    @Column(name = "location")
+//    private byte[] location;
     @Basic(optional = false)
     @Column(name = "last_update")
     @Temporal(TemporalType.TIMESTAMP)
@@ -71,12 +57,15 @@ public class Address implements Serializable {
     @JoinColumn(name = "city_id", referencedColumnName = "city_id")
     @ManyToOne(optional = false)
     private City cityId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
-    private List<Staff> staffList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
-    private List<Store> storeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+//    private List<Staff> staffList;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+//    private List<Store> storeList;
+    @Transient
+    @OneToMany( mappedBy = "addressId")
     private List<Customer> customerList;
+
 
     public Address() {
     }
@@ -85,12 +74,12 @@ public class Address implements Serializable {
         this.addressId = addressId;
     }
 
-    public Address(Short addressId, String address, String district, String phone, byte[] location, Date lastUpdate) {
+    public Address(Short addressId, String address, String district, String phone, Date lastUpdate) {
         this.addressId = addressId;
         this.address = address;
         this.district = district;
         this.phone = phone;
-        this.location = location;
+//        this.location = location;
         this.lastUpdate = lastUpdate;
     }
 
@@ -142,13 +131,13 @@ public class Address implements Serializable {
         this.phone = phone;
     }
 
-    public byte[] getLocation() {
-        return location;
-    }
-
-    public void setLocation(byte[] location) {
-        this.location = location;
-    }
+//    public byte[] getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(byte[] location) {
+//        this.location = location;
+//    }
 
     public Date getLastUpdate() {
         return lastUpdate;
@@ -166,22 +155,22 @@ public class Address implements Serializable {
         this.cityId = cityId;
     }
 
-    public List<Staff> getStaffList() {
-        return staffList;
-    }
+//    public List<Staff> getStaffList() {
+//        return staffList;
+//    }
 
-    public void setStaffList(List<Staff> staffList) {
-        this.staffList = staffList;
-    }
-
-    public List<Store> getStoreList() {
-        return storeList;
-    }
-
-    public void setStoreList(List<Store> storeList) {
-        this.storeList = storeList;
-    }
-
+//    public void setStaffList(List<Staff> staffList) {
+//        this.staffList = staffList;
+//    }
+//
+//    public List<Store> getStoreList() {
+//        return storeList;
+//    }
+//
+//    public void setStoreList(List<Store> storeList) {
+//        this.storeList = storeList;
+//    }
+//
     public List<Customer> getCustomerList() {
         return customerList;
     }

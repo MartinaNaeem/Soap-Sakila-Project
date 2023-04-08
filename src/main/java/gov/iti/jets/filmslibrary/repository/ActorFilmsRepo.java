@@ -61,6 +61,7 @@ public class ActorFilmsRepo {
         query.setParameter("filmId", filmId);
         int effectedRows = query.executeUpdate();
         entityManager.getTransaction().commit();
+        entityManager.close();
         return effectedRows;
     }
 
@@ -71,6 +72,7 @@ public class ActorFilmsRepo {
         Query query = entityManager.createQuery("Delete from FilmActor");
         query.executeUpdate();
         entityManager.getTransaction().commit();
+        entityManager.close();
         return true;
     }
 }

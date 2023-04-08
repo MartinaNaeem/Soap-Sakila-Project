@@ -1,3 +1,7 @@
+                                                                   
+////////////////////////////////////////////////////////////////////////////////// ACTOR FILMS REQUESTS
+
+
 
 //GET FILMS OF A SPECIFIC ACTOR USING ACTOR'S ID
 POST http://localhost:8080/library/getFilmsOFAnActor HTTP/1.1
@@ -85,3 +89,110 @@ Content-Type: text/xml
 
 
 
+/////////////////////////////////////////////////////////////////////////////// CUSTOMER REQUESTS
+
+
+//FILTER CUSTOMER USING NAME AND/OR COUNTRY AND/OR CITY AND/OR PHONE
+POST http://localhost:8080/library/filterCustomers HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:filterCustomers>
+            <name>ashraf ali</name>
+           <country>Algeria</country>
+        </library:filterCustomers>
+    </soap:Body>
+</soap:Envelope>
+
+###
+
+//GET ALL CUSTOMERS
+POST http://localhost:8080/library/getAllCustomers HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:getAllCustomers/>
+    </soap:Body>
+</soap:Envelope>
+
+###
+
+//ADD CUSTOMER
+POST http://localhost:8080/library/addCustomer HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:addCustomer>
+            <customerData>
+                <firstName>ahmed</firstName>
+                <lastName>ali</lastName>
+                <email>ahmed@yahoo</email>
+                <address>address</address>
+                <city>city</city>
+                <country>1</country>
+                <phone>01272934956</phone>
+                <active>true</active>
+                <postalCode>000000</postalCode>
+                <district>aaaa</district>
+                <storeId>1</storeId>
+            </customerData>
+        </library:addCustomer>
+    </soap:Body>
+</soap:Envelope>
+
+###
+
+//REMOVE CUSTOMER
+POST http://localhost:8080/library/removeCustomer HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:removeCustomer>
+        <id>620</id>
+        </library:removeCustomer>
+    </soap:Body>
+</soap:Envelope>
+
+
+###
+
+//UPDATE CUSTOMER
+POST http://localhost:8080/library/updateCustomer HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:library="http://services.filmslibrary.jets.iti.gov/">
+    <soap:Body>
+        <library:updateCustomer>
+        <customerData>
+            <id>620</id>
+            <firstName>ahmed</firstName>
+            <lastName>ali</lastName>
+            <email>ahmed@yahoo</email>
+            <address>addressss</address>
+            <city>cityyyy</city>
+            <country>1</country>
+            <phone>01555</phone>
+            <active>true</active>
+            <postalCode>151515</postalCode>
+            <district>districtaya</district>
+            <storeId>2</storeId>
+        </customerData>
+        </library:updateCustomer>
+    </soap:Body>
+</soap:Envelope>
+
+###

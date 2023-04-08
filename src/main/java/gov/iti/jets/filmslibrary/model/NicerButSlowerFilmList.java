@@ -29,12 +29,8 @@ public class NicerButSlowerFilmList implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    @JdbcTypeCode(SqlTypes.INTEGER)
-    private Long id;
 
+    @Id
     @Basic(optional = false)
     @Column(name = "FID")
     private short fid;

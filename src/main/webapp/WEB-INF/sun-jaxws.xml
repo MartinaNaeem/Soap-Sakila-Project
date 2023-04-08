@@ -2,6 +2,8 @@
 
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
 
+    <!-- ACTOR FILMS ENDPOINTS-->
+
     <endpoint name="getFilmsOFAnActor"
               implementation="gov.iti.jets.filmslibrary.services.ActorFilmsService"
               url-pattern="/getFilmsOFAnActor"/>
@@ -21,4 +23,29 @@
     <endpoint name="removeAllFilmsActors"
               implementation="gov.iti.jets.filmslibrary.services.ActorFilmsService"
               url-pattern="/removeAllFilmsActors"/>
+
+
+
+    <!-- CUSTOMER ENDPOINTS-->
+
+    <endpoint name="filterCustomers"
+              implementation="gov.iti.jets.filmslibrary.services.CustomerService"
+              url-pattern="/filterCustomers"/>
+
+
+    <endpoint name="getAllCustomers"
+              implementation="gov.iti.jets.filmslibrary.services.CustomerService"
+              url-pattern="/getAllCustomers"/>
+
+    <endpoint name="addCustomer"
+              implementation="gov.iti.jets.filmslibrary.services.CustomerService"
+              url-pattern="/addCustomer"/>
+
+    <endpoint name="removeCustomer"
+              implementation="gov.iti.jets.filmslibrary.services.CustomerService"
+              url-pattern="/removeCustomer"/>
+
+    <endpoint name="updateCustomer"
+              implementation="gov.iti.jets.filmslibrary.services.CustomerService"
+              url-pattern="/updateCustomer"/>
 </endpoints>
