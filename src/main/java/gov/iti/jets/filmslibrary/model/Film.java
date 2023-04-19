@@ -24,11 +24,13 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Builder;
 
 /**
  *
  * @author dell
  */
+@Builder
 @Entity
 @Table(name = "film")
 @NamedQueries({
@@ -58,12 +60,10 @@ public class Film implements Serializable {
     @Column(name = "description")
     private String description;
     @Column(name = "release_year")
-    @Temporal(TemporalType.DATE)
-    private Date releaseYear;
+    private Integer releaseYear;
     @Basic(optional = false)
     @Column(name = "rental_duration")
     private short rentalDuration;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "rental_rate")
     private BigDecimal rentalRate;
@@ -78,26 +78,35 @@ public class Film implements Serializable {
     private String specialFeatures;
     @Basic(optional = false)
     @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
-    private List<FilmCategory> filmCategoryList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
-    private List<FilmActor> filmActorList;
     @JoinColumn(name = "language_id", referencedColumnName = "language_id")
     @ManyToOne(optional = false)
     private Language languageId;
     @JoinColumn(name = "original_language_id", referencedColumnName = "language_id")
     @ManyToOne
     private Language originalLanguageId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "filmId")
-    private List<Inventory> inventoryList;
 
     public Film() {
     }
 
     public Film(Short filmId) {
         this.filmId = filmId;
+    }
+
+    public Film(Short filmId, String title, String description, Integer releaseYear, short rentalDuration, BigDecimal rentalRate, Short length, BigDecimal replacementCost, String rating, String specialFeatures, Date lastUpdate, Language languageId, Language originalLanguageId) {
+        this.filmId = filmId;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.rentalDuration = rentalDuration;
+        this.rentalRate = rentalRate;
+        this.length = length;
+        this.replacementCost = replacementCost;
+        this.rating = rating;
+        this.specialFeatures = specialFeatures;
+        this.lastUpdate = lastUpdate;
+        this.languageId = languageId;
+        this.originalLanguageId = originalLanguageId;
     }
 
     public Film(Short filmId, String title, short rentalDuration, BigDecimal rentalRate, BigDecimal replacementCost, Date lastUpdate) {
@@ -133,11 +142,11 @@ public class Film implements Serializable {
         this.description = description;
     }
 
-    public Date getReleaseYear() {
+    public Integer getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(Date releaseYear) {
+    public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
 
@@ -197,21 +206,6 @@ public class Film implements Serializable {
         this.lastUpdate = lastUpdate;
     }
 
-    public List<FilmCategory> getFilmCategoryList() {
-        return filmCategoryList;
-    }
-
-    public void setFilmCategoryList(List<FilmCategory> filmCategoryList) {
-        this.filmCategoryList = filmCategoryList;
-    }
-
-    public List<FilmActor> getFilmActorList() {
-        return filmActorList;
-    }
-
-    public void setFilmActorList(List<FilmActor> filmActorList) {
-        this.filmActorList = filmActorList;
-    }
 
     public Language getLanguageId() {
         return languageId;
@@ -229,13 +223,6 @@ public class Film implements Serializable {
         this.originalLanguageId = originalLanguageId;
     }
 
-    public List<Inventory> getInventoryList() {
-        return inventoryList;
-    }
-
-    public void setInventoryList(List<Inventory> inventoryList) {
-        this.inventoryList = inventoryList;
-    }
 
     @Override
     public int hashCode() {
