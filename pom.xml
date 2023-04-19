@@ -19,19 +19,54 @@
 
     <dependencies>
 
+
+     <!-- START OF JAX-WS DEPENDENCIES -->
+
+        <!-- JAX-WS API -->
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>4.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- JAX-WS API IMPLEMENTATION-->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>4.0.1</version>
+            <scope>runtime</scope>
+        </dependency>
+
+     <!-- END OF JAX-WS DEPENDENCIES -->
+
+
+        <!-- JAXB API -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <!-- JAXB Implementation -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
             <version>3.1.0</version>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.1.7.Final</version>
         </dependency>
-
-
-
 
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -39,6 +74,20 @@
             <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>7.0.1.Final</version>
+        </dependency>
+
 
         <dependency>
             <groupId>mysql</groupId>
@@ -53,23 +102,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-
-        <!-- JAX-WS API -->
-        <dependency>
-            <groupId>jakarta.xml.ws</groupId>
-            <artifactId>jakarta.xml.ws-api</artifactId>
-            <version>4.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- JAX-WS API METRO IMPLEMENTATION-->
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-rt</artifactId>
-            <version>4.0.1</version>
-            <scope>runtime</scope>
-        </dependency>
 
     </dependencies>
 
@@ -112,7 +144,7 @@
                     <username>admin</username>
                     <password>admin</password>
                     <url>http://localhost:8080/manager/text</url>
-                    <path>/library</path>
+                    <path>/libraryWS</path>
                 </configuration>
             </plugin>
         </plugins>
