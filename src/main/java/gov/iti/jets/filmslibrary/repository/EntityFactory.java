@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class EntityFactory {
-    public static final EntityManagerFactory emf =
+    public volatile static EntityManagerFactory emf =
             Persistence.createEntityManagerFactory("sakila");
 
 }
