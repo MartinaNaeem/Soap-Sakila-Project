@@ -14,16 +14,6 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "customer_list")
-@NamedQueries({
-    @NamedQuery(name = "CustomerList.findAll", query = "SELECT c FROM CustomerList c"),
-    @NamedQuery(name = "CustomerList.findById", query = "SELECT c FROM CustomerList c WHERE c.id = :id"),
-    @NamedQuery(name = "CustomerList.findByName", query = "SELECT c FROM CustomerList c WHERE c.name = :name"),
-    @NamedQuery(name = "CustomerList.findByAddress", query = "SELECT c FROM CustomerList c WHERE c.address = :address"),
-    @NamedQuery(name = "CustomerList.findByZipCode", query = "SELECT c FROM CustomerList c WHERE c.zipCode = :zipCode"),
-    @NamedQuery(name = "CustomerList.findByPhone", query = "SELECT c FROM CustomerList c WHERE c.phone = :phone"),
-    @NamedQuery(name = "CustomerList.findByCity", query = "SELECT c FROM CustomerList c WHERE c.city = :city"),
-    @NamedQuery(name = "CustomerList.findByCountry", query = "SELECT c FROM CustomerList c WHERE c.country = :country"),
-    @NamedQuery(name = "CustomerList.findByNotes", query = "SELECT c FROM CustomerList c WHERE c.notes = :notes")})
 public class CustomerList implements Serializable {
 
     private static final long serialVersionUID = 1L;
