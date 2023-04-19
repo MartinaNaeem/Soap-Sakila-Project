@@ -41,7 +41,6 @@ public class Payment implements Serializable {
     @Basic(optional = false)
     @Column(name = "payment_id")
     private Short paymentId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "amount")
     private BigDecimal amount;
