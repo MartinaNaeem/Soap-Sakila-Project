@@ -43,7 +43,6 @@ public class Inventory implements Serializable {
     private Integer inventoryId;
     @Basic(optional = false)
     @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
     @JoinColumn(name = "film_id", referencedColumnName = "film_id")
     @ManyToOne(optional = false)
@@ -51,8 +50,6 @@ public class Inventory implements Serializable {
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     @ManyToOne(optional = false)
     private Store storeId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "inventoryId")
-    private List<Rental> rentalList;
 
     public Inventory() {
     }
@@ -96,14 +93,6 @@ public class Inventory implements Serializable {
 
     public void setStoreId(Store storeId) {
         this.storeId = storeId;
-    }
-
-    public List<Rental> getRentalList() {
-        return rentalList;
-    }
-
-    public void setRentalList(List<Rental> rentalList) {
-        this.rentalList = rentalList;
     }
 
     @Override
