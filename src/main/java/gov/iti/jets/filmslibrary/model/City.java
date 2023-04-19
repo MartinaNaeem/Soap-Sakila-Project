@@ -49,8 +49,8 @@ public class City implements Serializable {
     @Column(name = "last_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cityId")
-//    private List<Address> addressList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cityId")
+    private List<Address> addressList;
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
     @ManyToOne(optional = false)
     private Country countryId;
@@ -92,13 +92,21 @@ public class City implements Serializable {
         this.lastUpdate = lastUpdate;
     }
 
-//    public List<Address> getAddressList() {
-//        return addressList;
-//    }
-//
-//    public void setAddressList(List<Address> addressList) {
-//        this.addressList = addressList;
-//    }
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
+
+    public City(Short cityId, String city, Date lastUpdate, List<Address> addressList, Country countryId) {
+        this.cityId = cityId;
+        this.city = city;
+        this.lastUpdate = lastUpdate;
+        this.addressList = addressList;
+        this.countryId = countryId;
+    }
 
     public Country getCountryId() {
         return countryId;
