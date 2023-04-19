@@ -1,16 +1,24 @@
 package gov.iti.jets.filmslibrary.repository;
 
+import gov.iti.jets.filmslibrary.dtos.actorDtos.ActorFilmsDto;
+import gov.iti.jets.filmslibrary.mappers.ActorFilmsMapper;
 import gov.iti.jets.filmslibrary.model.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import gov.iti.jets.filmslibrary.model.ActorInfo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
 public class ActorFilmsRepo {
 
+    ActorFilmsMapper actorFilmsMapper;
+
+    public ActorFilmsRepo() {
+        actorFilmsMapper = new ActorFilmsMapper();
+    }
 
     public ActorInfo getFilmsOFAnActor(short id){
         EntityManager entityManager = EntityFactory.emf.createEntityManager();
@@ -21,12 +29,18 @@ public class ActorFilmsRepo {
         return actorInfo;
     }
 
-    public List<ActorInfo> getFilmsOfAllActors(){
+    public  List<ActorFilmsDto> getFilmsOfAllActors(){
         EntityManager entityManager = EntityFactory.emf.createEntityManager();
         Query query = entityManager.createQuery("FROM ActorInfo");
         List<ActorInfo> actorInfoList = query.getResultList();
         entityManager.close();
-        return actorInfoList;
+
+        List<ActorFilmsDto> actorFilmsDtoList = new ArrayList<>();
+        for (ActorInfo actorInfo : actorInfoList) {
+            actorFilmsDtoList.add(actorFilmsMapper.toDto(actorInfo));
+        }
+
+        return actorFilmsDtoList;
     }
 
 
@@ -35,8 +49,8 @@ public class ActorFilmsRepo {
         entityManager.getTransaction().begin();
 
         FilmActor filmActor = new FilmActor();
-        filmActor.setActor(entityManager.find(Actor.class, actorId));
-        filmActor.setFilm(entityManager.find(Film.class, filmId));
+        filmActor.setActor(new Actor(actorId));
+        filmActor.setFilm(new Film(filmId));
         filmActor.setLastUpdate(new Date());
 
         FilmActorPK filmActorPK = new FilmActorPK();

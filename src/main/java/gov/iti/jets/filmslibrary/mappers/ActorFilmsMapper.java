@@ -1,6 +1,6 @@
 package gov.iti.jets.filmslibrary.mappers;
 
-import gov.iti.jets.filmslibrary.dtos.ActorFilmsDto;
+import gov.iti.jets.filmslibrary.dtos.actorDtos.ActorFilmsDto;
 import gov.iti.jets.filmslibrary.model.ActorInfo;
 
 import java.util.Arrays;
