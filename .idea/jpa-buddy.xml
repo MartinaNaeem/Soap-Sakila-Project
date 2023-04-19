@@ -5,5 +5,6 @@
     <option name="renamerInitialized" value="true" />
     <option name="reverseEngineeringLastDbConnectionId" value="26cef5c7-71a7-4fb6-adea-25bbfd0fa3e9" />
     <option name="reLastEntityCreationPackage" value="src/main/java/gov/iti/jets/filmslibrary/model" />
+    <option name="newEntityIdStrategy" value="Identity" />
   </component>
 </project>

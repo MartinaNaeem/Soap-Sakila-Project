@@ -2,6 +2,200 @@
 
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
 
+    <!-- ACTOR FILMS ENDPOINTS-->
 
+    <endpoint name="getFilmsOfAnActor"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorFilmsService"
+              url-pattern="/getFilmsOfAnActor"/>
+
+    <endpoint name="getFilmsOfAllActors"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorFilmsService"
+              url-pattern="/getFilmsOfAllActors"/>
+
+    <endpoint name="addExistingFilmToAnExistingActor"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorFilmsService"
+              url-pattern="/addExistingFilmToAnExistingActor"/>
+
+    <endpoint name="removeFilmOfAnActor"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorFilmsService"
+              url-pattern="/removeFilmOfAnActor"/>
+
+    <endpoint name="removeAllFilmsActors"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorFilmsService"
+              url-pattern="/removeAllFilmsActors"/>
+
+
+    <!-- CUSTOMER ENDPOINTS-->
+
+    <endpoint name="filterCustomers"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.CustomerService"
+              url-pattern="/filterCustomers"/>
+
+
+    <endpoint name="getAllCustomers"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.CustomerService"
+              url-pattern="/getAllCustomers"/>
+
+    <endpoint name="addCustomer"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.CustomerService"
+              url-pattern="/addCustomer"/>
+
+    <endpoint name="removeCustomer"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.CustomerService"
+              url-pattern="/removeCustomer"/>
+
+    <endpoint name="updateCustomer"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.CustomerService"
+              url-pattern="/updateCustomer"/>
+
+
+    <!--     FILM ENDPOINTS-->
+    <endpoint name="getAllFilms"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.FilmService"
+              url-pattern="/getAllFilms"/>
+
+    <endpoint name="filterFilms"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.FilmService"
+              url-pattern="/filterFilms"/>
+
+    <endpoint name="addFilm"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.FilmService"
+              url-pattern="/addFilm"/>
+
+    <endpoint name="updateFilm"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.FilmService"
+              url-pattern="/updateFilm"/>
+
+    <endpoint name="removeFilm"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.FilmService"
+              url-pattern="/removeFilm"/>
+
+
+    <!--RENTING ENDPOINTS-->
+    <endpoint name="getAllRents"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.RentingService"
+              url-pattern="/getAllRents"/>
+
+
+    <endpoint name="rentFilm"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.RentingService"
+              url-pattern="/rentFilm"/>
+
+    <endpoint name="returnFilm"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.RentingService"
+              url-pattern="/returnFilm"/>
+
+    <!--PAYMENT ENDPOINTS-->
+    <endpoint name="getAllPayments"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.PaymentService"
+              url-pattern="/getAllPayments"/>
+
+    <endpoint name="addPayment"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.PaymentService"
+              url-pattern="/addPayment"/>
+
+
+    <!--INVENTORY ENDPOINTS-->
+    <endpoint name="getAllInventories"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.InventoryService"
+              url-pattern="/getAllInventories"/>
+
+    <endpoint name="updateInventory"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.InventoryService"
+              url-pattern="/updateInventory"/>
+
+    <endpoint name="addInventory"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.InventoryService"
+              url-pattern="/addInventory"/>
+
+    <endpoint name="removeInventory"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.InventoryService"
+              url-pattern="/removeInventory"/>
+
+
+
+    <!--STORE ENDPOINTS-->
+    <endpoint name="getAllStores"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StoreService"
+              url-pattern="/getAllStores"/>
+
+    <endpoint name="updateStore"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StoreService"
+              url-pattern="/updateStore"/>
+
+    <endpoint name="addStore"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StoreService"
+              url-pattern="/addStore"/>
+
+
+    <!--ACTOR ENDPOINTS-->
+    <endpoint name="getAllActors"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorService"
+              url-pattern="/getAllActors"/>
+
+    <endpoint name="updateActor"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorService"
+              url-pattern="/updateActor"/>
+
+    <endpoint name="addActor"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorService"
+              url-pattern="/addActor"/>
+
+    <endpoint name="removeActor"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.ActorService"
+              url-pattern="/removeActor"/>
+
+
+
+    <!--ADDRESS ENDPOINTS-->
+    <endpoint name="getAllAddresses"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.AddressService"
+              url-pattern="/getAllAddresses"/>
+
+    <endpoint name="updateAddress"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.AddressService"
+              url-pattern="/updateAddress"/>
+
+    <endpoint name="addAddress"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.AddressService"
+              url-pattern="/addAddress"/>
+
+
+    <!--CITY ENDPOINTS-->
+    <endpoint name="getAllCities"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.CityService"
+              url-pattern="/getAllCities"/>
+
+    <endpoint name="addCity"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.CityService"
+              url-pattern="/addCity"/>
+
+
+    <!--STORE ENDPOINTS-->
+    <endpoint name="getAllStores"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StoreService"
+              url-pattern="/getAllStores"/>
+
+    <endpoint name="updateStore"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StoreService"
+              url-pattern="/updateStore"/>
+
+    <endpoint name="addStore"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StoreService"
+              url-pattern="/addStore"/>
+
+
+    <!--STAFF ENDPOINTS-->
+    <endpoint name="getAllStaff"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StaffService"
+              url-pattern="/getAllStaff"/>
+
+    <endpoint name="updateStaff"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StaffService"
+              url-pattern="/updateStaff"/>
+
+    <endpoint name="addStaff"
+              implementation="gov.iti.jets.filmslibrary.jaxws.services.StaffService"
+              url-pattern="/addStaff"/>
 
 </endpoints>
