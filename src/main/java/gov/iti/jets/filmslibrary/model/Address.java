@@ -46,23 +46,38 @@ public class Address implements Serializable {
     @Basic(optional = false)
     @Column(name = "phone")
     private String phone;
-//    @Basic(optional = false)
-//    @Lob
-//    @Column(name = "location")
-//    private byte[] location;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "location")
+    private byte[] location;
     @Basic(optional = false)
     @Column(name = "last_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
+
+    public Address(Short addressId, String address, String address2, String district, String postalCode, String phone, byte[] location, Date lastUpdate, City cityId, List<Staff> staffList, List<Store> storeList, List<Customer> customerList) {
+        this.addressId = addressId;
+        this.address = address;
+        this.address2 = address2;
+        this.district = district;
+        this.postalCode = postalCode;
+        this.phone = phone;
+        this.location = location;
+        this.lastUpdate = lastUpdate;
+        this.cityId = cityId;
+        this.staffList = staffList;
+        this.storeList = storeList;
+        this.customerList = customerList;
+    }
+
     @JoinColumn(name = "city_id", referencedColumnName = "city_id")
     @ManyToOne(optional = false)
     private City cityId;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
-//    private List<Staff> staffList;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
-//    private List<Store> storeList;
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+    private List<Staff> staffList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+    private List<Store> storeList;
     @OneToMany( mappedBy = "addressId")
     private List<Customer> customerList;
 
@@ -74,12 +89,12 @@ public class Address implements Serializable {
         this.addressId = addressId;
     }
 
-    public Address(Short addressId, String address, String district, String phone, Date lastUpdate) {
+    public Address(Short addressId, String address, String district, String phone, byte[] location, Date lastUpdate) {
         this.addressId = addressId;
         this.address = address;
         this.district = district;
         this.phone = phone;
-//        this.location = location;
+        this.location = location;
         this.lastUpdate = lastUpdate;
     }
 
@@ -131,13 +146,13 @@ public class Address implements Serializable {
         this.phone = phone;
     }
 
-//    public byte[] getLocation() {
-//        return location;
-//    }
-//
-//    public void setLocation(byte[] location) {
-//        this.location = location;
-//    }
+    public byte[] getLocation() {
+        return location;
+    }
+
+    public void setLocation(byte[] location) {
+        this.location = location;
+    }
 
     public Date getLastUpdate() {
         return lastUpdate;
@@ -155,22 +170,22 @@ public class Address implements Serializable {
         this.cityId = cityId;
     }
 
-//    public List<Staff> getStaffList() {
-//        return staffList;
-//    }
+    public List<Staff> getStaffList() {
+        return staffList;
+    }
 
-//    public void setStaffList(List<Staff> staffList) {
-//        this.staffList = staffList;
-//    }
-//
-//    public List<Store> getStoreList() {
-//        return storeList;
-//    }
-//
-//    public void setStoreList(List<Store> storeList) {
-//        this.storeList = storeList;
-//    }
-//
+    public void setStaffList(List<Staff> staffList) {
+        this.staffList = staffList;
+    }
+
+    public List<Store> getStoreList() {
+        return storeList;
+    }
+
+    public void setStoreList(List<Store> storeList) {
+        this.storeList = storeList;
+    }
+
     public List<Customer> getCustomerList() {
         return customerList;
     }
