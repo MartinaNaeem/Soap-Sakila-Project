@@ -20,7 +20,7 @@ public class StoreRepo {
     }
 
     public List<StoreGetterDto> getAllStores(){
-        EntityManager em = EntityFactory.emf.createEntityManager();
+        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
         List<Store> storeList = em.createQuery("from Store").getResultList();
         List<StoreGetterDto> storeGetterDtoList = new ArrayList<>();
         for(Store store :storeList){
@@ -31,7 +31,7 @@ public class StoreRepo {
     }
 
     public boolean addStore(StoreSetterDto storeSetterDto){
-        EntityManager em = EntityFactory.emf.createEntityManager();
+        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
         em.getTransaction().begin();
 
         Address address = addressRepo.addAddress(storeSetterDto.getAddress());
@@ -48,17 +48,14 @@ public class StoreRepo {
 
 
     public boolean updateStore(StoreSetterDto storeSetterDto){
-        EntityManager em = EntityFactory.emf.createEntityManager();
+        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
         em.getTransaction().begin();
 
         Address address = addressRepo.updateAddress(storeSetterDto.getAddress());
 
-        System.out.println("]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
         Store store = storeMapper.toStoreEntity(storeSetterDto);
         store.setAddressId(address);
-        System.out.println("66666666666666666666666666666");
         em.merge(store);
-        System.out.println("7777777777777777777777777777777");
         em.getTransaction().commit();
 
         em.close();

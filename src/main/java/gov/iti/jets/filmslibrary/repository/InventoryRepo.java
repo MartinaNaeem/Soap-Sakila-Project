@@ -18,7 +18,7 @@ public InventoryRepo() {
 }
 
     public List<InventoryGetterDto> getAllInventories() {
-        EntityManager em = EntityFactory.emf.createEntityManager();
+        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
         List<Inventory> inventoryList= em.createQuery("From Inventory ").getResultList();
         List<InventoryGetterDto> inventoryGetterDtoList = new ArrayList<>();
         for(Inventory inventory: inventoryList){
@@ -30,7 +30,7 @@ public InventoryRepo() {
 
 
     public boolean addInventory(InventorySetterDto inventorySetterDto) {
-        EntityManager em = EntityFactory.emf.createEntityManager();
+        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
         em.getTransaction().begin();
         em.persist(inventoryMapper.toInventory(inventorySetterDto));
         em.getTransaction().commit();
@@ -40,7 +40,7 @@ public InventoryRepo() {
 
 
     public boolean updateInventory(InventorySetterDto inventorySetterDto){
-        EntityManager em = EntityFactory.emf.createEntityManager();
+        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
         em.getTransaction().begin();
         em.merge(inventoryMapper.toInventory(inventorySetterDto));
         em.getTransaction().commit();
@@ -50,7 +50,7 @@ public InventoryRepo() {
     }
 
     public boolean removeInventory(Integer inventoryId) {
-        EntityManager em = EntityFactory.emf.createEntityManager();
+        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
         em.getTransaction().begin();
         Query q = em.createQuery("delete from Inventory i where i.inventoryId=: id");
         q.setParameter("id", inventoryId);

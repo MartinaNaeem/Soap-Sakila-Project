@@ -205,7 +205,7 @@ Content-Type: text/xml
 
 /////////////////////////////////////////////////////////////////////////////// FILM REQUESTS
 
-//FILTER FILM USING ID AND/OR CATEGORY AND/OR CITY AND/OR RATE AND/OR MINPRICE AND/OR MAXPRICE AND/OR RATE AND/OR REALESEYEAR AND/OR MINRENTALRATE AND/OR MAXRENTALRATE
+//GET ALL FILMS
 POST http://localhost:8080/libraryWS/getAllFilms HTTP/1.1
 Content-Type: text/xml
 

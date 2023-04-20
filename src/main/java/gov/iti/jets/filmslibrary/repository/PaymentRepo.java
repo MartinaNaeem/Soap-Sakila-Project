@@ -20,7 +20,7 @@ public class PaymentRepo {
         paymentMapper = new PaymentMapper();
     }
     public List<PaymentGetterDto> getAllPayments(){
-        EntityManager em = EntityFactory.emf.createEntityManager();
+        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
         List<Payment> paymentList = em.createQuery("From Payment ").getResultList();
         List<PaymentGetterDto> paymentGetterDtoList = new ArrayList<>();
         for(Payment payment: paymentList) {
@@ -31,7 +31,7 @@ public class PaymentRepo {
     }
 
     public void addPayment(PaymentSetterDto paymentSetterDto) {
-        EntityManager em= EntityFactory.emf.createEntityManager();
+        EntityManager em= EntityFactory.getInstance().getEmf().createEntityManager();
         em.getTransaction().begin();
         em.persist(paymentMapper.toPaymentEntity(paymentSetterDto));
         em.getTransaction().commit();
