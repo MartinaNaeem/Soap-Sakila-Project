@@ -22,7 +22,7 @@ public class RentingRepo {
     }
 
     public List<AllRentsDto> getAllRents() {
-        EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
         List<Rental> rentalList = entityManager.createQuery("From Rental ").getResultList();
 
         List<AllRentsDto> allRentsDtoList = new ArrayList<>();
@@ -35,7 +35,7 @@ public class RentingRepo {
     }
 
     public void rentFilm(RentalSetterDto rentalSetterDto){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Rental rental = rentingMapper.toRental(rentalSetterDto);
         rental.setInventoryId(em.find(Inventory.class, rentalSetterDto.getInventoryId()));
@@ -44,7 +44,7 @@ public class RentingRepo {
         em.close();
     }
     public void returnFilm(Integer rentalId){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Query q = em.createQuery("update Rental r set r.returnDate = :date, r.lastUpdate = :lastUpdate where r.rentalId = :rentalId");
         q.setParameter("date", new Date());

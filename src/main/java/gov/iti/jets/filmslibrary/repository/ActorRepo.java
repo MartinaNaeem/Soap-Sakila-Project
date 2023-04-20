@@ -20,7 +20,7 @@ public class ActorRepo {
     }
 
     public List<ActorGetterDto> getAllActors() {
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         List<Actor> actorList = em.createQuery("from Actor").getResultList();
         List<ActorGetterDto> actorGetterDtoList = new ArrayList<>();
         for (Actor actor : actorList) {
@@ -31,7 +31,7 @@ public class ActorRepo {
     }
 
     public boolean addActor(ActorSetterDto actorSetterDto) {
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Actor actor = new Actor();
         actor.setFirstName(actorSetterDto.getFirstName());
@@ -44,7 +44,7 @@ public class ActorRepo {
     }
 
     public boolean deleteActor(Short id) {
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Query q = em.createQuery("delete from Actor a where a.actorId =:id");
         q.setParameter("id", id);
@@ -55,7 +55,7 @@ public class ActorRepo {
     }
 
     public boolean updateActor(ActorSetterDto actorSetterDto) {
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Actor actor = new Actor();
         actor.setLastUpdate(new Date());

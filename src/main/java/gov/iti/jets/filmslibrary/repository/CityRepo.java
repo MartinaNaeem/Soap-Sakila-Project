@@ -19,7 +19,7 @@ public class CityRepo {
     }
 
     public City addCity(CitySetterDto citySetterDto) {
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         City city = cityMapper.toCityEntity(citySetterDto);
         em.persist(city);
@@ -30,7 +30,7 @@ public class CityRepo {
     }
 
     public List<CityGetterDto> getAllCities(){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
        List<City> cities = em.createQuery("from City").getResultList();
         List<CityGetterDto> cityGetterDtoList = new ArrayList<>();
         for(City city:cities){

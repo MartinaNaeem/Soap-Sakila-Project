@@ -24,7 +24,7 @@ public class AddressRepo {
     }
 
     public Address addAddress(AddressSetterDto addressSetterDto){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Address address = getAddressWithCity(addressSetterDto);
         em.persist(address);
@@ -34,7 +34,7 @@ public class AddressRepo {
     }
 
     public Address updateAddress(AddressSetterDto addressSetterDto){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Address address = getAddressWithCity(addressSetterDto);
         em.merge(address);
@@ -44,7 +44,7 @@ public class AddressRepo {
     }
 
     public List<AddressGetterDto> getAllAddresses(){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         List<Address> addressList = em.createQuery("from Address").getResultList();
         List<AddressGetterDto> addressGetterDtoList = new ArrayList<>();
         for(Address address:addressList){
@@ -57,7 +57,7 @@ public class AddressRepo {
 
     private Address getAddressWithCity(AddressSetterDto addressSetterDto){
         Address address = addressMapper.toAddressEntity(addressSetterDto);
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         address.setLocation(em.find(Address.class, 1).getLocation());
 
         Query q = em.createQuery("From City c where lower(c.city) = :city");

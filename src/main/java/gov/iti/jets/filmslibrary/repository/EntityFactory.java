@@ -5,24 +5,16 @@ import jakarta.persistence.Persistence;
 import lombok.Synchronized;
 
 public class EntityFactory {
-    private volatile static EntityFactory instance;
+    private volatile static EntityManagerFactory emf = null;
 
-    private EntityFactory() {
-    }
-
-    public static EntityFactory getInstance() {
-        if (instance == null) {
-            synchronized (EntityFactory.class) {
-                if (instance == null) {
-                    instance = new EntityFactory();
-                }
+    public static EntityManagerFactory getEmf() {
+        if (emf == null) {
+            synchronized (EntityManagerFactory.class) {
+                if (emf == null) {
+                    emf = Persistence.createEntityManagerFactory("sakila");                }
             }
         }
-        return instance;
-    }
-
-    public EntityManagerFactory getEmf() {
-        return Persistence.createEntityManagerFactory("sakila");
+        return emf;
     }
 
 

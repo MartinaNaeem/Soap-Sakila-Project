@@ -19,7 +19,7 @@ public class StaffRepo {
     }
 
     public List<StaffGetterDto> getAllStaff(){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         List<Staff> staffList = em.createQuery("from Staff").getResultList();
         List<StaffGetterDto> staffGetterDtoList = new ArrayList<>();
         for(Staff staff: staffList){
@@ -30,7 +30,7 @@ public class StaffRepo {
     }
 
     public boolean addStaff(StaffSetterDto staffSetterDto){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Staff staff = staffMapper.toStaffEntity(staffSetterDto);
         Address address = addressRepo.addAddress(staffSetterDto.getAddress());
@@ -43,7 +43,7 @@ public class StaffRepo {
     }
 
     public boolean updateStaff(StaffSetterDto staffSetterDto){
-        EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager em = EntityFactory.getEmf().createEntityManager();
         em.getTransaction().begin();
         Staff staff = staffMapper.toStaffEntity(staffSetterDto);
         Address address = addressRepo.updateAddress(staffSetterDto.getAddress());

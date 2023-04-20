@@ -21,7 +21,7 @@ public class FilmRepo {
    }
 
    public List<FilmGetterDto> filterFilms(FilmFilterDto filmFilterDto) {
-       EntityManager em = EntityFactory.getInstance().getEmf().createEntityManager();
+       EntityManager em = EntityFactory.getEmf().createEntityManager();
        Query query = em.createQuery("select f from FilmList f where f.fid = coalesce(?1, f.fid)" +
                "and f.category = coalesce(?2, f.category) " +
                "and f.language = coalesce(?3, f.language) " +
@@ -52,7 +52,7 @@ public class FilmRepo {
 
 
    public List<FilmGetterDto> getAllFilms() {
-       EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+       EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
        Query query = entityManager.createQuery("From FilmList");
        List<FilmGetterDto> filmGetterDtoList = new ArrayList<>();
        for (FilmList film : (List<FilmList>) query.getResultList()) {
@@ -64,7 +64,7 @@ public class FilmRepo {
    }
 
    public boolean addFilm(FilmSetterDto filmSetterDto) {
-       EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+       EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
 
        entityManager.getTransaction().begin();
 
@@ -118,7 +118,7 @@ public class FilmRepo {
        Film film = filmMapper.toFilmEntity(filmSetterDto);
        film.setFilmId(filmSetterDto.getFilmId());
 
-       EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+       EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
        entityManager.getTransaction().begin();
 
        //UPDATE LANGUAGE AND ORIGINAL LANGUAGE TO FILM
@@ -162,7 +162,7 @@ public class FilmRepo {
 
 
    public boolean removeFilm(short id) {
-       EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+       EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
        entityManager.getTransaction().begin();
 
 

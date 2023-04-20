@@ -21,7 +21,7 @@ public class ActorFilmsRepo {
     }
 
     public ActorInfo getFilmsOFAnActor(short id){
-        EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
         Query query = entityManager.createQuery("FROM ActorInfo a WHERE a.id = :id");
         query.setParameter("id",id);
         ActorInfo actorInfo = (ActorInfo)query.getSingleResult();
@@ -30,7 +30,7 @@ public class ActorFilmsRepo {
     }
 
     public  List<ActorFilmsDto> getFilmsOfAllActors(){
-        EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
         Query query = entityManager.createQuery("FROM ActorInfo");
         List<ActorInfo> actorInfoList = query.getResultList();
         entityManager.close();
@@ -45,7 +45,7 @@ public class ActorFilmsRepo {
 
 
     public boolean addExistingFilmToAnExistingActor(short filmId, short actorId) {
-        EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
         entityManager.getTransaction().begin();
 
         FilmActor filmActor = new FilmActor();
@@ -68,7 +68,7 @@ public class ActorFilmsRepo {
     }
 
     public int removeFilmOfAnActor(short filmId, short actorId) {
-        EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
         entityManager.getTransaction().begin();
         Query query = entityManager.createQuery("Delete from FilmActor a where a.actor.actorId = :actorId  and a.film.filmId = :filmId");
         query.setParameter("actorId", actorId);
@@ -81,7 +81,7 @@ public class ActorFilmsRepo {
 
 
     public boolean removeAllFilmsActors() {
-        EntityManager entityManager = EntityFactory.getInstance().getEmf().createEntityManager();
+        EntityManager entityManager = EntityFactory.getEmf().createEntityManager();
         entityManager.getTransaction().begin();
         Query query = entityManager.createQuery("Delete from FilmActor");
         query.executeUpdate();
